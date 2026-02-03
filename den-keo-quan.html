@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đèn kéo quân</title>
+  <style>
+    .lamp {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      position: relative;
+      margin: 50px auto;
+      animation: rotate 5s linear infinite;
+    }
+    .lamp img {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+    }
+    /* Đặt 6 ảnh quanh vòng tròn */
+    .lamp img:nth-child(1) { top: 0; left: 100px; }
+    .lamp img:nth-child(2) { top: 50px; left: 200px; }
+    .lamp img:nth-child(3) { top: 150px; left: 200px; }
+    .lamp img:nth-child(4) { top: 200px; left: 100px; }
+    .lamp img:nth-child(5) { top: 150px; left: 0; }
+    .lamp img:nth-child(6) { top: 50px; left: 0; }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">Đèn kéo quân</h2>
+  <div class="lamp" id="lamp">
+    <img src="images/anh1.png" alt="Ảnh 1">
+    <img src="images/anh2.png" alt="Ảnh 2">
+    <img src="images/anh3.png" alt="Ảnh 3">
+    <img src="images/anh4.png" alt="Ảnh 4">
+    <img src="images/anh5.png" alt="Ảnh 5">
+    <img src="images/anh6.png" alt="Ảnh 6">
+  </div>
+
+  <script>
+    const lamp = document.getElementById('lamp');
+    const imgs = lamp.querySelectorAll('img');
+
+    imgs.forEach(img => {
+      img.addEventListener('mouseenter', () => {
+        lamp.style.animationPlayState = 'paused';
+      });
+      img.addEventListener('mouseleave', () => {
+        lamp.style.animationPlayState = 'running';
+      });
+    });
+  </script>
+</body>
+</html>
